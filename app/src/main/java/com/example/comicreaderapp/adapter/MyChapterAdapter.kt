@@ -1,13 +1,16 @@
 package com.example.comicreaderapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.comicreaderapp.Common.Common
 import com.example.comicreaderapp.Interface.IRecycleClick
 import com.example.comicreaderapp.R
+import com.example.comicreaderapp.ViewComicActivity
 import com.example.comicreaderapp.models.Chapter
 import java.lang.StringBuilder
 
@@ -44,7 +47,9 @@ class MyChapterAdapter (internal var context: Context,
 
         holder.setClick(object :IRecycleClick{
             override fun OnClick(view: View, position: Int) {
-
+                Common.selected_chapter = chapterList[position]
+                Common.chapter_index = position
+                context.startActivity(Intent(context,ViewComicActivity::class.java))
             }
         })
     }
