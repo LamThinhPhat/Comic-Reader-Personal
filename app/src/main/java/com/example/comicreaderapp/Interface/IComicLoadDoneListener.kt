@@ -2,6 +2,6 @@ package com.example.comicreaderapp.Interface
 
 import com.example.comicreaderapp.models.Comic
 
-interface ComicLoadDoneListener {
+interface IComicLoadDoneListener {
     fun OnComicLoadDoneListener(comicList:List<Comic>)
 }

@@ -2,24 +2,20 @@ package com.example.comicreaderapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.GridLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.comicreaderapp.Common.Common
-import com.example.comicreaderapp.Interface.BannerLoadDoneListener
-import com.example.comicreaderapp.Interface.ComicLoadDoneListener
+import com.example.comicreaderapp.Interface.IBannerLoadDoneListener
+import com.example.comicreaderapp.Interface.IComicLoadDoneListener
 import com.example.comicreaderapp.adapter.MyComicAdapter
-import com.example.comicreaderapp.adapter.MySliderAdapter
 import com.example.comicreaderapp.models.Comic
 import com.example.comicreaderapp.service.PicassoImageLoadingService
 import com.google.firebase.database.*
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.comic_item.*
 import ss.com.bannerslider.Slider
 
-class MainActivity : AppCompatActivity(), BannerLoadDoneListener, ComicLoadDoneListener {
+class MainActivity : AppCompatActivity(), IBannerLoadDoneListener, IComicLoadDoneListener {
 
     //DB
     internal lateinit var banner_ref : DatabaseReference
@@ -27,8 +23,8 @@ class MainActivity : AppCompatActivity(), BannerLoadDoneListener, ComicLoadDoneL
 
     //Listener
 
-    lateinit var iBannerLoadDoneListener : BannerLoadDoneListener
-    lateinit var iComicLoadDoneListener: ComicLoadDoneListener
+    lateinit var iIBannerLoadDoneListener : IBannerLoadDoneListener
+    lateinit var iComicLoadDoneListener: IComicLoadDoneListener
 
     lateinit var alertDialog:android.app.AlertDialog
 
@@ -37,7 +33,7 @@ class MainActivity : AppCompatActivity(), BannerLoadDoneListener, ComicLoadDoneL
         setContentView(R.layout.activity_main)
 
         //Init Listener
-        iBannerLoadDoneListener = this
+        iIBannerLoadDoneListener = this
         iComicLoadDoneListener = this
 
         //init dialog
@@ -99,7 +95,7 @@ class MainActivity : AppCompatActivity(), BannerLoadDoneListener, ComicLoadDoneL
                     banner_list.add(image!!)
                 }
 
-                iBannerLoadDoneListener.OnBannerLoadDoneListener(banner_list)
+                iIBannerLoadDoneListener.OnBannerLoadDoneListener(banner_list)
 
             }
 

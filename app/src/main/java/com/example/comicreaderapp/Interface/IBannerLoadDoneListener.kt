@@ -1,5 +1,5 @@
 package com.example.comicreaderapp.Interface
 
-interface BannerLoadDoneListener {
+interface IBannerLoadDoneListener {
     fun OnBannerLoadDoneListener(banners:List<String>)
 }
