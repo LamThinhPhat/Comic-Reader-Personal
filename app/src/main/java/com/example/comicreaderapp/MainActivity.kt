@@ -1,5 +1,6 @@
 package com.example.comicreaderapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -61,6 +62,10 @@ class MainActivity : AppCompatActivity(), IBannerLoadDoneListener, IComicLoadDon
 
         recycle_comic.setHasFixedSize(true)
         recycle_comic.layoutManager = GridLayoutManager(this@MainActivity, 2)
+
+        btn_search.setOnClickListener{
+            startActivity(Intent(this@MainActivity, SearchFilterActivity::class.java))
+        }
 
     }
 
